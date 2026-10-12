@@ -6,7 +6,7 @@
     agenda: "Dagsorden",
     minutes: "Referat af",
     agenda-of: "Dagsorden",
-    in: "i",
+    "in": "i",
     at: "kl.",
     page: "side",
     of: "af",
@@ -18,7 +18,7 @@
     extra-attendees: "Ekstra tilstedeværende",
     approval: "Godkendelse af referat for seneste møde",
     approved: "Godkendt",
-    for: "For", against: "Imod", abstain: "Blankt",
+    "for": "For", against: "Imod", abstain: "Blankt",
     passed: "✓ Vedtaget", rejected: "✗ Ikke vedtaget", tie: "– Faldet ved stemmelighed",
     responsible: "Ansvarlig",
     proposal: "Forslag",
@@ -32,7 +32,7 @@
     agenda: "Agenda",
     minutes: "Minutes of",
     agenda-of: "Agenda for",
-    in: "in",
+    "in": "in",
     at: "at",
     page: "page",
     of: "of",
@@ -44,7 +44,7 @@
     extra-attendees: "Also present",
     approval: "Approval of previous minutes",
     approved: "Approved",
-    for: "For", against: "Against", abstain: "Abstain",
+    "for": "For", against: "Against", abstain: "Abstain",
     passed: "✓ Passed", rejected: "✗ Rejected", tie: "– Fell on a tie",
     responsible: "Responsible",
     proposal: "Proposal",
@@ -55,14 +55,13 @@
 )
 
 // Current language, read from `text.lang` (set by `meeting`). Falls back to English.
-#let tr(key) = {
-  let lang = text.lang
-  strings.at(if lang in strings { lang } else { "en" }).at(key)
-}
+// Raw lookup; call only inside `context`.
+#let lookup(key) = strings.at(if text.lang in strings { text.lang } else { "en" }).at(key)
+#let tr(key) = context lookup(key)
 
-#let fmt-date(d) = {
+#let fmt-date(d) = context {
   if type(d) == datetime {
-    let m = tr("months").at(d.month() - 1)
+    let m = lookup("months").at(d.month() - 1)
     if text.lang == "da" [#d.day(). #m #d.year()] else [#d.day() #m #d.year()]
   } else [#d]
 }

@@ -22,7 +22,7 @@
     #or-ph(minute-taker)
     == #if attendees-label != none { attendees-label } else { tr("attendees") }
     #or-ph(_join(attendees))
-    #if extra != "" [
+    #if extra not in (none, "") [
       == #tr("extra-attendees")
       #extra
     ]
@@ -64,7 +64,7 @@
     [#tr("minutes") #meeting-name#org]
   }
 
-  set document(title: title, author: if author != none { author } else { () })
+  set document(author: if author != none { author } else { () })
   set page(
     paper: "a4",
     margin: (top: 2.6cm, bottom: 2.6cm, x: 2.5cm),
@@ -88,7 +88,7 @@
   // Body is padded by `step`; headings are pulled back so level 1 sits at the margin.
   show heading: it => block(above: if it.level == 1 { 1.3em } else { 1.0em }, below: 0.6em, {
     set text(weight: "bold", size: 11pt)
-    pad(left: (it.level - 1) * step, {
+    pad(left: (it.level - 2) * step, {
       if it.numbering != none { counter(heading).display(it.numbering); h(0.6em) }
       it.body
     })
@@ -109,8 +109,10 @@
   )
   v(0.8em)
 
-  if formalia {
-    _formalia(is-agenda, chair, minute-taker, attendees, _join(extra-attendees), approved, attendees-label)
-  }
-  body
+  pad(left: step, {
+    if formalia {
+      _formalia(is-agenda, chair, minute-taker, attendees, _join(extra-attendees), approved, attendees-label)
+    }
+    body
+  })
 }
