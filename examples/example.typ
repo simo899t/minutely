@@ -7,7 +7,7 @@
   attendees: ("Simon Holm", "Daniel Nissen", "Anne Sofie"),
   author: "Simon Holm",
   lang: "en",
-  logo: image("sdu-logo.png", width: 140%)
+  logo: image("logo.png", width: 140%)
 )
 = Budget
 == Nyt budget #resp("Daniel", "Anne")
