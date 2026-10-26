@@ -31,7 +31,7 @@ Typst template for meeting minutes and agendas (Danish/English).
 #next-meeting(date: datetime(year: 2026, month: 4, day: 9), time: "16:00", location: "Conference room, deck 3")
 ```
 <p align="center">
-  <img width="599" height="729" alt="Rendered minutes page titled Minutes of board meeting in The Empire, with formalia, numbered agenda items, a vote table, a proposal, an amendment and the next meeting" src="https://github.com/user-attachments/assets/61828eac-c5e5-4e1a-abae-95c9d8d1d3fa" />
+  <img width="599" height="729" alt="Rendered minutes page titled Minutes of board meeting in The Empire, with formalia, numbered agenda items, a vote table, a proposal, an amendment and the next meeting" src="https://github.com/user-attachments/assets/f2ccd2d9-b82c-46ed-a575-d21b1168c8ce" />
   <br>
   <em>Rendered output of the code above: the title is generated from <code>meeting-name</code> and <code>organisation</code> ("Minutes of board meeting in The Empire"), with date, time, location and the logo beside it. The formalia list chair, minute-taker and attendees. Headings become numbered agenda items, <code>#resp</code> marks who is responsible, <code>#vote</code> records the result, <code>#proposal</code> and <code>#amendment</code> show numbered motions, and <code>#next-meeting</code> closes the minutes.</em>
 </p>
