@@ -36,7 +36,6 @@ Typst template for meeting minutes and agendas (Danish/English).
   <em>Rendered output of the code above: the title is generated from <code>meeting-name</code> and <code>organisation</code> ("Minutes of board meeting in The Empire"), with date, time, location and the logo beside it. The formalia list chair, minute-taker and attendees. Headings become numbered agenda items, <code>#resp</code> marks who is responsible, <code>#vote</code> records the result, <code>#proposal</code> and <code>#amendment</code> show numbered motions, and <code>#next-meeting</code> closes the minutes.</em>
 </p>
 
-
 ## `meeting` parameters
 
 | Parameter | Default | Description |
