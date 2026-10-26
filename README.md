@@ -30,8 +30,8 @@ Typst template for meeting minutes and agendas (Danish/English).
 #amendment(no: 4, before: [may], after: [shall])
 #next-meeting(date: datetime(year: 2026, month: 4, day: 9), time: "16:00", location: "Conference room, deck 3")
 ```
+<img width="599" height="729" alt="image" src="https://github.com/user-attachments/assets/61828eac-c5e5-4e1a-abae-95c9d8d1d3fa" />
 
-Formalia (chair, minute-taker, attendees, approval of last minutes) is inserted automatically. See `examples/`.
 
 ## `meeting` parameters
 
