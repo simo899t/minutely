@@ -18,9 +18,14 @@
 #let _names(v) = if type(v) == array and v.len() > 0 { v.join(linebreak()) } else if type(v) == str { v }
 
 // Vote: each of agrees/against/abstain is a number, a name, or an array of names.
-#let vote(question: none, agrees: 0, against: 0, abstain: 0, result: auto) = {
+// decision: none = computed from the counts; true/"yes" = passed, false/"no" = rejected,
+// anything else is shown as-is.
+#let vote(question: none, agrees: 0, against: 0, abstain: 0, decision: none, result: auto) = {
   let (f, a, b) = (agrees, against, abstain).map(_count)
-  let verdict = if result != auto { result }
+  let decision = if decision == none and result != auto { result } else { decision }
+  let verdict = if decision in (true, "yes", "ja") { tr("passed") }
+    else if decision in (false, "no", "nej") { tr("rejected") }
+    else if decision != none { decision }
     else if f > a { tr("passed") } else if f < a { tr("rejected") } else { tr("tie") }
   let cell(label, n, v) = align(center)[
     *#label* \ #n

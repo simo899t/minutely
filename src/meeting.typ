@@ -51,10 +51,16 @@
   formalia: true,
   author: none,
   logo: none,
-  lang: "da",
+  lang: auto,                // auto: "da" if meeting-name/kind is Danish (møde, referat, …), else "en"
   font: "New Computer Modern",
   body,
 ) = {
+  let lang = if lang != auto { lang } else {
+    let words = lower(meeting-name + " " + kind)
+    let danish = ("møde", "generalforsamling", "referat", "dagsorden")
+    if danish.any(w => words.contains(w)) { "da" } else { "en" }
+  }
+  assert(lang in ("da", "en"), message: "minutely: lang must be \"da\", \"en\" or auto, got " + repr(lang))
   set text(font: font, size: 11pt, lang: lang)
   let is-agenda = lower(kind) in ("agenda", "dagsorden")
   let org = if organisation != none [ #tr("in") #organisation ]
@@ -94,6 +100,7 @@
     })
   })
 
+  assert(type(logo) != str, message: "logo must be content, e.g. logo: image(\"logo.png\"), a path string cannot be resolved from inside the package")
   // Title block
   grid(
     columns: (1fr, if logo != none { 2.6cm } else { 0pt }),
