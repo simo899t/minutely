@@ -1,4 +1,4 @@
-#import "@local/minutely:0.1.0": *
+#import "../lib.typ": *
 
 #let WT = "W. Tarkin"
 #let FP = "F. Piett"
